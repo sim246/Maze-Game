@@ -1,19 +1,14 @@
 ﻿using Maze;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Xml.Schema;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        //C:\Users\2133009\Downloads\dragomirassignment2\map5x5.txt
+        //C:\Users\2133009\Downloads\dragomirassignment5\map5x5.txt
         bool notlocation = true;
-        List<string> directions = new List<string>();
-        int length = 0;
-        int width = 0;
         string url = "";
         while (notlocation)
         {
@@ -22,11 +17,6 @@ internal class Program
                 Console.WriteLine("Input file path to maze: ");
                 url = Console.ReadLine();
                 string[] lines = File.ReadAllLines(url, Encoding.UTF8);
-
-                length = lines.Length;
-                width = lines[0].Split(',').Length;
-                directions = SplitLines(lines, length, width);
-
                 notlocation = false;
             }
             catch
@@ -62,19 +52,5 @@ internal class Program
             Console.WriteLine();
         }
 
-    }
-
-    public static List<string> SplitLines(string[] lines, int length, int width)
-    {
-        List<string> directions = new List<string>();
-        for (int i = 0; i < lines.Length; i++)
-        {
-            string[] line = lines[i].Split(',');
-            for (int j = 0; j < line.Length; j++)
-            {
-                directions.Add(line[j]);
-            }
-        }
-        return directions;
     }
 }
