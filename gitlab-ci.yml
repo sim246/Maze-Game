@@ -1,0 +1,50 @@
+default:
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+
+build-debug:
+    stage: build
+    script:
+    - 'apt-get update -y'
+    - 'apt-get install fontconfig -y'
+    - 'fc-cache -fv'
+    - dotnet build -c Debug
+
+build-release:
+    stage: build
+    script:
+    - 'apt-get update -y'
+    - 'apt-get install fontconfig -y'
+    - 'fc-cache -fv'
+    - dotnet build -c Release
+
+unit-tests-MazeHuntKill:
+    stage: test
+    script:
+    - cd MazeHuntKillTests
+    - 'dotnet test --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-MazeHuntKillTests-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
+    artifacts:
+        when: always
+        paths:
+        - ./**/*test-MazeHuntKillTests-result.xml
+        reports:
+            junit:
+            - ./**/*test-MazeHuntKillTests-result.xml
+        expire_in: 1 week
+
+deploy:
+    stage: deploy
+    script:
+    - 'cd MazeGame'
+    - 'apt-get update -y'
+    - 'apt-get install fontconfig -y'
+    - 'fc-cache -fv'
+    - 'dotnet publish MazeGame.csproj -c Release -r win-x64 --output publish'
+    - 'apt-get update -y'
+    - 'apt-get install zip -y'
+    - 'zip -r MazeGame.zip publish'
+    - echo ziped MazeGame.zip
+    artifacts:
+        when: always
+        paths:
+        - './MazeGame/MazeGame.zip'
+        expire_in: 2 weeks

@@ -1,4 +1,4 @@
-# DragomirAssignment5
+# DragomirAssignment4
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/csy3dawson23-24/510/studentwork/Dragomir/dragomirassignment5.git
+git remote add origin https://gitlab.com/csy3dawson23-24/510/studentwork/Dragomir/dragomirassignment4.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/csy3dawson23-24/510/studentwork/Dragomir/dragomirassignment5/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/csy3dawson23-24/510/studentwork/Dragomir/dragomirassignment4/-/settings/integrations)
 
 ## Collaborate with your team
 
