@@ -8,6 +8,8 @@ internal class Program
     private static void Main(string[] args)
     {
         //C:\Users\2133009\Downloads\dragomirassignment5\map5x5.txt
+        //C:\Users\2133009\Downloads\dragomirassignment5\map9x7.txt
+        //C:\Users\2133009\Downloads\dragomirassignment5\map9x13.txt
         bool notlocation = true;
         string url = "";
         while (notlocation)
