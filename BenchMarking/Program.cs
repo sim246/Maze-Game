@@ -12,10 +12,30 @@ internal class Program
     {
         bool notvalid = true;
         int type = 0;
+        string theType = "";
         int height = 0;
         int width = 0;
         TimeSpan timeTaken = TimeSpan.Zero;
 
+        while (notvalid)
+        {
+            try
+            {
+                Console.WriteLine("Input type of maze: ");
+                Console.WriteLine("MazeHuntKill maze - input 1");
+                Console.WriteLine("MazeRecursion maze - input 2");
+                type = Int32.Parse(Console.ReadLine());
+                if (type == 1 || type == 2)
+                {
+                    notvalid = false;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Type of maze invalid!");
+            }
+        }
+        notvalid = true;
         while (notvalid)
         {
             try
@@ -36,43 +56,31 @@ internal class Program
                 Console.WriteLine("Maze size invalid!");
             }
         }
-        notvalid = true;
-        while (notvalid)
+
+        if (type == 1)
         {
-            try
-            {
-                Console.WriteLine("Input type of maze: ");
-                Console.WriteLine("MazeHuntKill maze - input 1");
-                Console.WriteLine("MazeRecursion maze - input 2");
-                type = Int32.Parse(Console.ReadLine());
-                if (type == 1)
-                {
-                    notvalid = false;
-                    IMapProvider mazeHuntKill = new HuntKill();
-                    IMap bench = new Map(mazeHuntKill);
-                    timeTaken = TimeIt(bench, height, width);
-                }
-                else if (type == 2)
-                {
-                    notvalid = false;
-                    IMapProvider mazeRecursive = new MazeRecursive();
-                    IMap bench = new Map(mazeRecursive);
-                    timeTaken = TimeIt(bench, height, width);
-                }
-            }
-            catch
-            {
-                Console.WriteLine("Type of maze invalid!");
-            }
+            IMapProvider mazeHuntKill = new HuntKill();
+            theType = "Hunt Kill";
+            timeTaken = TimeIt(() => {
+                mazeHuntKill.CreateMap(width, height);
+            });
         }
-        WriteToFile("C:\\Users\\2133009\\Downloads\\dragomirassignment5\\testdoc.txt", timeTaken.ToString(@"m\:ss\.fff"));
+        else if (type == 2)
+        {
+            IMapProvider mazeRecursive = new MazeRecursive();
+            theType = "Recursive";
+            timeTaken = TimeIt(() => {
+                mazeRecursive.CreateMap(width, height);
+            });
+        }
+        WriteToFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.ToString() + "\\timerdoc.txt", theType + " " + height + "x" + width +": " + timeTaken.ToString(@"m\:ss\.fff"));
     }
 
-    public static TimeSpan TimeIt(IMap bench, int height, int width)
+    public static TimeSpan TimeIt(Action bench)
     {
         var timer = new Stopwatch();
         timer.Start();
-        bench.CreateMap(height, width);
+        bench.Invoke();
         timer.Stop();
         TimeSpan timeTaken = timer.Elapsed;
         return timeTaken;
