@@ -1,0 +1,6 @@
+Hunt Kill 90x90: 0:01.428
+Recursive 90x90: 0:00.008
+Hunt Kill 20x20: 0:00.009
+Recursive 20x20: 0:00.006
+Hunt Kill 2x2: 0:00.008
+Recursive 2x2: 0:00.008

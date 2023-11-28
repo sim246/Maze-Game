@@ -13,9 +13,35 @@ internal class Program
         bool notvalid = true;
         int type = 0;
         string theType = "";
+        string doc = "";
         int height = 0;
         int width = 0;
         TimeSpan timeTaken = TimeSpan.Zero;
+
+        while (notvalid)
+        {
+            try
+            {
+                Console.WriteLine("Input release or debug file: ");
+                Console.WriteLine("release - input 1");
+                Console.WriteLine("debug - input 2");
+                type = Int32.Parse(Console.ReadLine());
+                if (type == 1)
+                {
+                    notvalid = false;
+                    doc = "timerrelease";
+                }
+                else if (type == 2)
+                {
+                    notvalid = false;
+                    doc = "timerdebug";
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Type of doc invalid!");
+            }
+        }
 
         while (notvalid)
         {
@@ -73,7 +99,7 @@ internal class Program
                 mazeRecursive.CreateMap(width, height);
             });
         }
-        WriteToFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.ToString() + "\\timerdoc.txt", theType + " " + height + "x" + width +": " + timeTaken.ToString(@"m\:ss\.fff"));
+        WriteToFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.ToString() + "\\" + doc + ".txt", theType + " " + height + "x" + width +": " + timeTaken.ToString(@"m\:ss\.fff"));
     }
 
     public static TimeSpan TimeIt(Action bench)
