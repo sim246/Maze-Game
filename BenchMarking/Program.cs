@@ -13,35 +13,11 @@ internal class Program
         bool notvalid = true;
         int type = 0;
         string theType = "";
-        string doc = "";
         int height = 0;
         int width = 0;
+        int increase = 0;
+        int iterations = 0;
         TimeSpan timeTaken = TimeSpan.Zero;
-
-        while (notvalid)
-        {
-            try
-            {
-                Console.WriteLine("Input release or debug file: ");
-                Console.WriteLine("release - input 1");
-                Console.WriteLine("debug - input 2");
-                type = Int32.Parse(Console.ReadLine());
-                if (type == 1)
-                {
-                    notvalid = false;
-                    doc = "timerrelease";
-                }
-                else if (type == 2)
-                {
-                    notvalid = false;
-                    doc = "timerdebug";
-                }
-            }
-            catch
-            {
-                Console.WriteLine("Type of doc invalid!");
-            }
-        }
 
         while (notvalid)
         {
@@ -66,6 +42,28 @@ internal class Program
         {
             try
             {
+                Console.WriteLine("Input number of iterations and size increase: ");
+                Console.WriteLine("Iterations: ");
+                iterations = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Size Increase: ");
+                increase = Int32.Parse(Console.ReadLine());
+                
+                if (iterations > 0 || increase > 0)
+                {
+                    notvalid = false;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Input not invalid!");
+            }
+        }
+
+        notvalid = true;
+        while (notvalid)
+        {
+            try
+            {
                 Console.WriteLine("Input size of maze: ");
                 Console.WriteLine("Input height: ");
                 height = Int32.Parse(Console.ReadLine());
@@ -83,23 +81,31 @@ internal class Program
             }
         }
 
-        if (type == 1)
+        while (iterations > 0)
         {
-            IMapProvider mazeHuntKill = new HuntKill();
-            theType = "Hunt Kill";
-            timeTaken = TimeIt(() => {
-                mazeHuntKill.CreateMap(width, height);
-            });
+            if (type == 1)
+            {
+                IMapProvider mazeHuntKill = new HuntKill();
+                theType = "Hunt Kill";
+                timeTaken = TimeIt(() =>
+                {
+                    mazeHuntKill.CreateMap(width, height);
+                });
+            }
+            else if (type == 2)
+            {
+                IMapProvider mazeRecursive = new MazeRecursive();
+                theType = "Recursive";
+                timeTaken = TimeIt(() =>
+                {
+                    mazeRecursive.CreateMap(width, height);
+                });
+            }
+            WriteToFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.ToString() + "\\timer.txt", theType + " " + height + "x" + width + ": " + timeTaken.ToString(@"mm\:ss\.fff"));
+            height += increase;
+            width += increase;
+            iterations--;
         }
-        else if (type == 2)
-        {
-            IMapProvider mazeRecursive = new MazeRecursive();
-            theType = "Recursive";
-            timeTaken = TimeIt(() => {
-                mazeRecursive.CreateMap(width, height);
-            });
-        }
-        WriteToFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.ToString() + "\\" + doc + ".txt", theType + " " + height + "x" + width +": " + timeTaken.ToString(@"m\:ss\.fff"));
     }
 
     public static TimeSpan TimeIt(Action bench)

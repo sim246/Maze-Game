@@ -1,0 +1,44 @@
+Debug:
+Hunt Kill 5x5: 00:00.003
+Hunt Kill 15x15: 00:00.003
+Hunt Kill 25x25: 00:00.039
+Hunt Kill 35x35: 00:00.116
+Hunt Kill 45x45: 00:00.343
+Hunt Kill 55x55: 00:00.880
+Hunt Kill 65x65: 00:01.754
+Hunt Kill 75x75: 00:03.547
+Hunt Kill 85x85: 00:06.179
+Hunt Kill 95x95: 00:09.658
+
+Recursive 5x5: 00:00.002
+Recursive 15x15: 00:00.000
+Recursive 25x25: 00:00.000
+Recursive 35x35: 00:00.000
+Recursive 45x45: 00:00.001
+Recursive 55x55: 00:00.001
+Recursive 65x65: 00:00.002
+Recursive 75x75: 00:00.016
+Recursive 85x85: 00:00.004
+Recursive 95x95: 00:00.009
+
+Hunt Kill 5x5: 00:00.004
+Hunt Kill 15x15: 00:00.006
+Hunt Kill 25x25: 00:00.038
+Hunt Kill 35x35: 00:00.136
+Hunt Kill 45x45: 00:00.326
+Hunt Kill 55x55: 00:00.735
+Hunt Kill 65x65: 00:01.635
+Hunt Kill 75x75: 00:03.259
+Hunt Kill 85x85: 00:06.152
+Hunt Kill 95x95: 00:10.458
+
+Recursive 5x5: 00:00.003
+Recursive 15x15: 00:00.000
+Recursive 25x25: 00:00.000
+Recursive 35x35: 00:00.001
+Recursive 45x45: 00:00.001
+Recursive 55x55: 00:00.002
+Recursive 65x65: 00:00.003
+Recursive 75x75: 00:00.009
+Recursive 85x85: 00:00.003
+Recursive 95x95: 00:00.005
