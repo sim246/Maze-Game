@@ -46,7 +46,7 @@ public class MazeHuntKillTests
             }
 
         }
-        List<Direction> list = map.ValidDirections(new MapVector(0,3));
+        List<Direction> list = map.ValidDirectionsWalk(new MapVector(0,3));
         Assert.AreEqual(list.Count, 2);
         Assert.AreEqual(list[0], Direction.S);
         Assert.AreEqual(list[1], Direction.W);
@@ -69,25 +69,6 @@ public class MazeHuntKillTests
 
         v = map.VectorForwardPosition(Direction.W, new MapVector(0, 1));
         Assert.IsTrue(v.Equals(new MapVector(0, 0)));
-    }
-
-    [TestMethod]
-    public void MazeHuntKillTestRandomDirection()
-    {
-        HuntKill map = new HuntKill(1);
-        map.CreateMap(4,4);
-        for (int i = 0; i < map._mazeDirections.GetLength(0); i++)
-        {
-            for (int j = 0; j < map._mazeDirections.GetLength(0); j++)
-            {
-                map._mazeDirections[i, j] = Direction.None;
-            }
-
-        }
-        Direction dir = map.RandomDirection(new MapVector(0, 1));
-        Assert.AreEqual(dir, Direction.E);
-        dir = map.RandomDirection(new MapVector(0, 1));
-        Assert.AreEqual(dir, Direction.W);
     }
 
     [TestMethod]

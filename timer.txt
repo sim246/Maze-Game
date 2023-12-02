@@ -92,10 +92,26 @@ Recursive 15x15: 00:00.000
 Recursive 20x20: 00:00.000
 Recursive 25x25: 00:00.000
 Recursive 30x30: 00:00.000
+
+Fixed:
 Hunt Kill 150x150: 00:01.744
 Hunt Kill 200x200: 00:05.414
+
 Hunt Kill 150x150: 00:01.687
 Hunt Kill 200x200: 00:05.403
 Hunt Kill 250x250: 00:12.750
 Hunt Kill 300x300: 00:26.985
 Hunt Kill 350x350: 00:48.750
+
+Hunt Kill 5x5: 00:00.029
+Hunt Kill 15x15: 00:00.004
+Hunt Kill 25x25: 00:00.002
+Hunt Kill 35x35: 00:00.008
+Hunt Kill 45x45: 00:00.013
+Hunt Kill 55x55: 00:00.026
+Hunt Kill 65x65: 00:00.055
+Hunt Kill 75x75: 00:00.130
+Hunt Kill 85x85: 00:00.172
+Hunt Kill 95x95: 00:00.266
+
+Optimized:
