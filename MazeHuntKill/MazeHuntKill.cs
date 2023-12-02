@@ -8,17 +8,21 @@ public class HuntKill : IMapProvider
     internal Direction[,] _mazeDirections;
     private Random _rnd;
     MapVector _startingMapVector;
-    Direction _direction = Direction.None;
+    MapVector _forwardPosition;
+    Direction _oppositeDirection;
+    List<Direction> _directionList;
 
     public HuntKill(int? seed = null)
     {
         if (seed != null)
         {
             _rnd = new Random((int)seed);
+            _directionList = new() { Direction.N, Direction.S, Direction.E, Direction.W };
         }
         else
         {
             _rnd = new Random();
+            _directionList = new() { Direction.N, Direction.S, Direction.E, Direction.W };
         }
     }
 
@@ -67,9 +71,8 @@ public class HuntKill : IMapProvider
 
     internal List<Direction> ValidDirectionsWalk(MapVector startingMapVector)
     {
-        List<Direction> directionList = new() { Direction.N, Direction.S, Direction.E, Direction.W };
         List<Direction> validDirectionList = new() { };
-        foreach (Direction direction in directionList)
+        foreach (Direction direction in _directionList)
         {
             MapVector forward = VectorForwardPosition(direction, startingMapVector);
             if (forward.InsideBoundary(_mazeDirections.GetLength(0), _mazeDirections.GetLength(1)) == false &&
@@ -83,9 +86,8 @@ public class HuntKill : IMapProvider
 
     internal List<Direction> ValidDirectionsHunt(MapVector startingMapVector)
     {
-        List<Direction> directionList = new() { Direction.N, Direction.S, Direction.E, Direction.W };
         List<Direction> validDirectionList = new() { };
-        foreach (Direction direction in directionList)
+        foreach (Direction direction in _directionList)
         {
             MapVector forward = VectorForwardPosition(direction, startingMapVector);
             if (forward.InsideBoundary(_mazeDirections.GetLength(0), _mazeDirections.GetLength(1)) == false &&
@@ -97,42 +99,34 @@ public class HuntKill : IMapProvider
         return validDirectionList;
     }
 
-    private MapVector Walk(MapVector startingMapVector)
+    private MapVector Walk()
     {
-        List<Direction> directionList = ValidDirectionsWalk(startingMapVector);
-
+        List<Direction> directionList = ValidDirectionsWalk(_startingMapVector);
         if (directionList.Count > 0)
         {
             int ran = _rnd.Next(directionList.Count);
-            _direction = directionList[ran];
-        }
-        else
-        {
-            _direction = Direction.None;
-        }
-        if (_direction != Direction.None)
-        {
-            Direction oppositeDirection = OppositeDirection(_direction);
-            MapVector forwardPosition = VectorForwardPosition(_direction, startingMapVector);
-            if (_mazeDirections[startingMapVector.X, startingMapVector.Y] != Direction.None)
+            Direction direction = directionList[ran];
+            _oppositeDirection = OppositeDirection(direction);
+            _forwardPosition = VectorForwardPosition(direction, _startingMapVector);
+            if (_mazeDirections[_startingMapVector.X, _startingMapVector.Y] != Direction.None)
             {
-                _mazeDirections[startingMapVector.X, startingMapVector.Y] = _mazeDirections[startingMapVector.X, startingMapVector.Y] | _direction;
+                _mazeDirections[_startingMapVector.X, _startingMapVector.Y] = _mazeDirections[_startingMapVector.X, _startingMapVector.Y] | direction;
             }
             else
             {
-                _mazeDirections[startingMapVector.X, startingMapVector.Y] = _direction;
+                _mazeDirections[_startingMapVector.X, _startingMapVector.Y] = direction;
             }
-            if (_mazeDirections[forwardPosition.X, forwardPosition.Y] != Direction.None)
+            if (_mazeDirections[_forwardPosition.X, _forwardPosition.Y] != Direction.None)
             {
-                _mazeDirections[forwardPosition.X, forwardPosition.Y] = _mazeDirections[forwardPosition.X, forwardPosition.Y] | oppositeDirection;
+                _mazeDirections[_forwardPosition.X, _forwardPosition.Y] = _mazeDirections[_forwardPosition.X, _forwardPosition.Y] | _oppositeDirection;
             }
             else
             {
-                _mazeDirections[forwardPosition.X, forwardPosition.Y] = oppositeDirection;
+                _mazeDirections[_forwardPosition.X, _forwardPosition.Y] = _oppositeDirection;
             }
-            return forwardPosition;
+            return _forwardPosition;
         }
-        return startingMapVector;
+        return _startingMapVector;
     }
 
     private MapVector Hunt(MapVector startingMapVector)
@@ -148,31 +142,27 @@ public class HuntKill : IMapProvider
                     if (directionList.Count > 0)
                     {
                         int ran = _rnd.Next(directionList.Count);
-                        _direction = directionList[ran];
+                        Direction direction = directionList[ran];
+                        Direction oppositeDirection = OppositeDirection(direction);
+                        MapVector forwardPosition = VectorForwardPosition(direction, startingMapVector);
+                        if (_mazeDirections[startingMapVector.X, startingMapVector.Y] != Direction.None)
+                        {
+                            _mazeDirections[startingMapVector.X, startingMapVector.Y] = _mazeDirections[startingMapVector.X, startingMapVector.Y] | direction;
+                        }
+                        else
+                        {
+                            _mazeDirections[startingMapVector.X, startingMapVector.Y] = direction;
+                        }
+                        if (_mazeDirections[forwardPosition.X, forwardPosition.Y] != Direction.None)
+                        {
+                            _mazeDirections[forwardPosition.X, forwardPosition.Y] = _mazeDirections[forwardPosition.X, forwardPosition.Y] | oppositeDirection;
+                        }
+                        else
+                        {
+                            _mazeDirections[forwardPosition.X, forwardPosition.Y] = oppositeDirection;
+                        }
+                        return forwardPosition;
                     }
-                    else
-                    {
-                        _direction = Direction.None;
-                    }
-                    Direction oppositeDirection = OppositeDirection(_direction);
-                    MapVector forwardPosition = VectorForwardPosition(_direction, startingMapVector);
-                    if (_mazeDirections[startingMapVector.X, startingMapVector.Y] != Direction.None)
-                    {
-                        _mazeDirections[startingMapVector.X, startingMapVector.Y] = _mazeDirections[startingMapVector.X, startingMapVector.Y] | _direction;
-                    }
-                    else
-                    {
-                        _mazeDirections[startingMapVector.X, startingMapVector.Y] = _direction;
-                    }
-                    if (_mazeDirections[forwardPosition.X, forwardPosition.Y] != Direction.None)
-                    {
-                        _mazeDirections[forwardPosition.X, forwardPosition.Y] = _mazeDirections[forwardPosition.X, forwardPosition.Y] | oppositeDirection;
-                    }
-                    else
-                    {
-                        _mazeDirections[forwardPosition.X, forwardPosition.Y] = oppositeDirection;
-                    }
-                    return forwardPosition;
                 }
             }
         }
@@ -186,19 +176,11 @@ public class HuntKill : IMapProvider
         int y = _rnd.Next(width);
         _startingMapVector = new(x, y);
 
-        Direction[,] dir = CreateMap();
-
-        return dir;
-    }
-
-    public Direction[,] CreateMap()
-    {
-
-        bool continueHuntKill = true; 
+        bool continueHuntKill = true;
         while (continueHuntKill)
         {
-            MapVector newVector = Walk(_startingMapVector);
-            if (newVector == _startingMapVector)
+            MapVector newVector = Walk();
+            while (newVector == _startingMapVector)
             {
                 newVector = Hunt(_startingMapVector);
             }
@@ -216,5 +198,10 @@ public class HuntKill : IMapProvider
             }
         }
         return _mazeDirections;
+    }
+
+    public Direction[,] CreateMap()
+    {
+        throw new NotImplementedException();
     }
 }
