@@ -94,6 +94,7 @@ Recursive 25x25: 00:00.000
 Recursive 30x30: 00:00.000
 
 Fixed:
+Release:
 Hunt Kill 5x5: 00:00.028
 Hunt Kill 15x15: 00:00.000
 Hunt Kill 25x25: 00:00.001
@@ -112,6 +113,7 @@ Hunt Kill 300x300: 00:29.163
 Hunt Kill 350x350: 00:54.777
 
 Optimizing:
+Release:
 Hunt Kill 5x5: 00:00.007
 Hunt Kill 15x15: 00:00.000
 Hunt Kill 25x25: 00:00.001
@@ -122,3 +124,19 @@ Hunt Kill 65x65: 00:00.063
 Hunt Kill 75x75: 00:00.114
 Hunt Kill 85x85: 00:00.187
 Hunt Kill 95x95: 00:00.312
+
+Debug:
+Hunt Kill 5x5: 00:00.009
+Hunt Kill 15x15: 00:00.001
+Hunt Kill 25x25: 00:00.012
+Hunt Kill 35x35: 00:00.035
+Hunt Kill 45x45: 00:00.090
+Hunt Kill 55x55: 00:00.209
+Hunt Kill 65x65: 00:00.433
+Hunt Kill 75x75: 00:00.746
+Hunt Kill 85x85: 00:01.228
+Hunt Kill 95x95: 00:01.889
+
+Hunt Kill 100x100: 00:06.411
+Hunt Kill 95x95: 00:26.205
+Hunt Kill 95x95: 00:03.569
