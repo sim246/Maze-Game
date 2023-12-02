@@ -87,3 +87,8 @@ Recursive 65x65: 00:00.001
 Recursive 75x75: 00:00.004
 Recursive 85x85: 00:00.005
 Recursive 95x95: 00:00.005
+Recursive 10x10: 00:00.018
+Recursive 15x15: 00:00.000
+Recursive 20x20: 00:00.000
+Recursive 25x25: 00:00.000
+Recursive 30x30: 00:00.000

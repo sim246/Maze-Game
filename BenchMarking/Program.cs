@@ -101,6 +101,7 @@ internal class Program
                     mazeRecursive.CreateMap(width, height);
                 });
             }
+            Console.WriteLine(theType + " " + height + "x" + width + ": " + timeTaken.ToString(@"mm\:ss\.fff"));
             WriteToFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.ToString() + "\\timer.txt", theType + " " + height + "x" + width + ": " + timeTaken.ToString(@"mm\:ss\.fff"));
             height += increase;
             width += increase;
