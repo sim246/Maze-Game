@@ -104,8 +104,21 @@ Hunt Kill 65x65: 00:00.063
 Hunt Kill 75x75: 00:00.105
 Hunt Kill 85x85: 00:00.222
 Hunt Kill 95x95: 00:00.297
+
 Hunt Kill 150x150: 00:01.983
 Hunt Kill 200x200: 00:05.911
 Hunt Kill 250x250: 00:14.358
 Hunt Kill 300x300: 00:29.163
 Hunt Kill 350x350: 00:54.777
+
+Optimizing:
+Hunt Kill 5x5: 00:00.007
+Hunt Kill 15x15: 00:00.000
+Hunt Kill 25x25: 00:00.001
+Hunt Kill 35x35: 00:00.011
+Hunt Kill 45x45: 00:00.012
+Hunt Kill 55x55: 00:00.044
+Hunt Kill 65x65: 00:00.063
+Hunt Kill 75x75: 00:00.114
+Hunt Kill 85x85: 00:00.187
+Hunt Kill 95x95: 00:00.312
