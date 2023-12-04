@@ -43,6 +43,29 @@ Recursive 75x75: 00:00.009
 Recursive 85x85: 00:00.003
 Recursive 95x95: 00:00.005
 
+Fixed Hunt Kill 5x5: 00:00.007
+Fixed Hunt Kill 15x15: 00:00.004
+Fixed Hunt Kill 25x25: 00:00.014
+Fixed Hunt Kill 35x35: 00:00.028
+Fixed Hunt Kill 45x45: 00:00.077
+Fixed Hunt Kill 55x55: 00:00.193
+Fixed Hunt Kill 65x65: 00:00.388
+Fixed Hunt Kill 75x75: 00:00.690
+Fixed Hunt Kill 85x85: 00:01.221
+Fixed Hunt Kill 95x95: 00:01.798
+
+Improved Recursive 5x5: 00:00.023
+Improved Recursive 15x15: 00:00.000
+Improved Recursive 25x25: 00:00.001
+Improved Recursive 35x35: 00:00.001
+Improved Recursive 45x45: 00:00.003
+Improved Recursive 55x55: 00:00.004
+Improved Recursive 65x65: 00:00.005
+Improved Recursive 75x75: 00:00.007
+Improved Recursive 85x85: 00:00.027
+Improved Recursive 95x95: 00:00.009
+
+
 Release:
 Hunt Kill 5x5: 00:00.100
 Hunt Kill 15x15: 00:00.007
@@ -103,6 +126,7 @@ Fixed Hunt Kill 65x65: 00:00.064
 Fixed Hunt Kill 75x75: 00:00.118
 Fixed Hunt Kill 85x85: 00:00.171
 Fixed Hunt Kill 95x95: 00:00.318
+
 Improved Recursive 5x5: 00:00.047
 Improved Recursive 15x15: 00:00.000
 Improved Recursive 25x25: 00:00.000
@@ -113,6 +137,7 @@ Improved Recursive 65x65: 00:00.004
 Improved Recursive 75x75: 00:00.006
 Improved Recursive 85x85: 00:00.026
 Improved Recursive 95x95: 00:00.004
+
 Fixed Hunt Kill 150x150: 00:01.799
 Fixed Hunt Kill 200x200: 00:05.372
 Fixed Hunt Kill 250x250: 00:13.209
