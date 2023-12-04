@@ -1,4 +1,4 @@
-﻿using BenchMarking;
+﻿using MazeRecursion;
 using Maze;
 
 namespace MazeRecursionTests;

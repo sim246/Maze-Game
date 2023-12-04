@@ -26,8 +26,10 @@ internal class Program
                 Console.WriteLine("Input type of maze: ");
                 Console.WriteLine("MazeHuntKill maze - input 1");
                 Console.WriteLine("MazeRecursion maze - input 2");
+                Console.WriteLine("ImprovedRecursion maze - input 4");
+                Console.WriteLine("FixedHuntKill maze - input 3");
                 type = Int32.Parse(Console.ReadLine());
-                if (type == 1 || type == 2)
+                if (type == 1 || type == 2 || type == 3 | type == 4)
                 {
                     notvalid = false;
                 }
@@ -96,6 +98,24 @@ internal class Program
             {
                 IMapProvider mazeRecursive = new MazeRecursive();
                 theType = "Recursive";
+                timeTaken = TimeIt(() =>
+                {
+                    mazeRecursive.CreateMap(width, height);
+                });
+            }
+            else if (type == 3)
+            {
+                IMapProvider mazeHuntKill = new FixedHuntKill();
+                theType = "Fixed Hunt Kill";
+                timeTaken = TimeIt(() =>
+                {
+                    mazeHuntKill.CreateMap(width, height);
+                });
+            }
+            else if (type == 4)
+            {
+                IMapProvider mazeRecursive = new ImprovedRecursive();
+                theType = "Improved Recursive";
                 timeTaken = TimeIt(() =>
                 {
                     mazeRecursive.CreateMap(width, height);

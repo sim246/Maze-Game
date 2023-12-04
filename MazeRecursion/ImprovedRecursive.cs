@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("MazeRecursionTests")]
-namespace BenchMarking
+namespace MazeRecursion
 {
-    public class ImprovedRecursive
+    public class ImprovedRecursive : IMapProvider
     {
         internal Direction[,] _mazeDirections;
         private Random _rnd;
