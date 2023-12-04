@@ -50,27 +50,14 @@ public class MazeRecursionTests
     }
 
     [TestMethod]
-    public void MazeRecursiveTestRandomDirectionList()
-    {
-        MazeRecursive map = new MazeRecursive(1);
-        List<Direction> list = map.RandomDirectionList();
-
-        Assert.AreEqual(list.Count, 4);
-        Assert.AreEqual(list[0], Direction.S);
-        Assert.AreEqual(list[1], Direction.E);
-        Assert.AreEqual(list[2], Direction.W);
-        Assert.AreEqual(list[3], Direction.N);
-    }
-
-    [TestMethod]
     public void MazeRecursiveTestCreateMapRecursive()
     {
         MazeRecursive map = new MazeRecursive(0);
         Direction[,] mazeDirections = map.CreateMap(2,2);
 
         Assert.AreEqual(mazeDirections[0, 0], Direction.E | Direction.S);
-        Assert.AreEqual(mazeDirections[0, 1], Direction.S | Direction.W);
-        Assert.AreEqual(mazeDirections[1, 0], Direction.N);
-        Assert.AreEqual(mazeDirections[1, 1], Direction.N);
+        Assert.AreEqual(mazeDirections[0, 1], Direction.W);
+        Assert.AreEqual(mazeDirections[1, 0], Direction.N | Direction.E);
+        Assert.AreEqual(mazeDirections[1, 1], Direction.W);
     }
 }

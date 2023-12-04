@@ -93,7 +93,9 @@ Recursive 20x20: 00:00.000
 Recursive 25x25: 00:00.000
 Recursive 30x30: 00:00.000
 
-Fixed:
+
+
+Fixed Hunt Kill:
 Release:
 Hunt Kill 5x5: 00:00.028
 Hunt Kill 15x15: 00:00.000
@@ -137,6 +139,59 @@ Hunt Kill 75x75: 00:00.746
 Hunt Kill 85x85: 00:01.228
 Hunt Kill 95x95: 00:01.889
 
+Parallel Loops:
 Hunt Kill 100x100: 00:06.411
 Hunt Kill 95x95: 00:26.205
 Hunt Kill 95x95: 00:03.569
+
+
+Debug:
+Recursive 5x5: 00:00.031
+Recursive 15x15: 00:00.000
+Recursive 25x25: 00:00.000
+Recursive 35x35: 00:00.004
+Recursive 45x45: 00:00.004
+Recursive 55x55: 00:00.006
+Recursive 65x65: 00:00.005
+Recursive 75x75: 00:00.008
+Recursive 85x85: 00:00.036
+Recursive 95x95: 00:00.009
+
+Recursive 5x5: 00:00.024
+Recursive 15x15: 00:00.000
+Recursive 25x25: 00:00.000
+Recursive 35x35: 00:00.001
+Recursive 45x45: 00:00.002
+Recursive 55x55: 00:00.006
+Recursive 65x65: 00:00.005
+Recursive 75x75: 00:00.008
+Recursive 85x85: 00:00.026
+Recursive 95x95: 00:00.010
+
+Parallel Loops:
+Recursive 5x5: 00:00.185
+Recursive 15x15: 00:00.035
+Exception
+
+Release:
+Recursive 5x5: 00:00.044
+Recursive 15x15: 00:00.000
+Recursive 25x25: 00:00.000
+Recursive 35x35: 00:00.001
+Recursive 45x45: 00:00.002
+Recursive 55x55: 00:00.003
+Recursive 65x65: 00:00.004
+Recursive 75x75: 00:00.005
+Recursive 85x85: 00:00.026
+Recursive 95x95: 00:00.004
+
+Recursive 5x5: 00:00.045
+Recursive 15x15: 00:00.000
+Recursive 25x25: 00:00.000
+Recursive 35x35: 00:00.001
+Recursive 45x45: 00:00.002
+Recursive 55x55: 00:00.002
+Recursive 65x65: 00:00.003
+Recursive 75x75: 00:00.004
+Recursive 85x85: 00:00.036
+Recursive 95x95: 00:00.007

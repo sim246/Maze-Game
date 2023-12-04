@@ -7,16 +7,21 @@ public class MazeRecursive : IMapProvider
 {
     internal Direction[,] _mazeDirections;
     private Random _rnd;
+    List<Direction> _directionList;
+    Direction _oppositeDirection;
+    MapVector _forwardPosition;
 
     public MazeRecursive(int? seed = null)
     {
         if (seed != null)
         {
             _rnd = new Random((int)seed);
+            _directionList = new() { Direction.N, Direction.S, Direction.E, Direction.W };
         }
         else
         {
             _rnd = new Random();
+            _directionList = new() { Direction.N, Direction.S, Direction.E, Direction.W };
         }
     }
 
@@ -62,32 +67,17 @@ public class MazeRecursive : IMapProvider
         return Direction.None;
     }
 
-    internal List<Direction> RandomDirectionList()
-    {
-        List<Direction> directionList = new() { Direction.N, Direction.S, Direction.E, Direction.W };
-        int count = directionList.Count;
-        while (count > 1)
-        {
-            int ran = _rnd.Next(count);
-            count--;
-            Direction tempValue = directionList[ran];
-            directionList[ran] = directionList[count];
-            directionList[count] = tempValue;
-        }
-        return directionList;
-    }
-
     private void Walk(MapVector startingMapVector)
     {
-        List<Direction> directionList = RandomDirectionList();
-
-        foreach (Direction dir in directionList)
+        _directionList = _directionList.OrderBy(a => _rnd.Next()).ToList();
+        
+        foreach (Direction dir in _directionList)
         {
-            Direction oppositeDirection = OppositeDirection(dir);
-            MapVector forwardPosition = VectorForwardPosition(dir, startingMapVector);
+            _oppositeDirection = OppositeDirection(dir);
+            _forwardPosition = VectorForwardPosition(dir, startingMapVector);
 
-            if (forwardPosition.InsideBoundary(_mazeDirections.GetLength(0), _mazeDirections.GetLength(1)) == false &&
-                _mazeDirections[forwardPosition.X, forwardPosition.Y] == Direction.None)
+            if (_forwardPosition.InsideBoundary(_mazeDirections.GetLength(0), _mazeDirections.GetLength(1)) == false &&
+                _mazeDirections[_forwardPosition.X, _forwardPosition.Y] == Direction.None)
             {
                 if (_mazeDirections[startingMapVector.X, startingMapVector.Y] != Direction.None)
                 {
@@ -97,8 +87,8 @@ public class MazeRecursive : IMapProvider
                 {
                     _mazeDirections[startingMapVector.X, startingMapVector.Y] = dir;
                 }
-                _mazeDirections[forwardPosition.X, forwardPosition.Y] = oppositeDirection;
-                Walk(forwardPosition);
+                _mazeDirections[_forwardPosition.X, _forwardPosition.Y] = _oppositeDirection;
+                Walk(_forwardPosition);
             }
         }
     }
