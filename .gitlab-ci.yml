@@ -17,18 +17,23 @@ build-release:
     - 'fc-cache -fv'
     - dotnet build -c Release
 
-unit-tests-MazeHuntKill:
+unit-tests:
     stage: test
     script:
     - cd MazeHuntKillTests
     - 'dotnet test --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-MazeHuntKillTests-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
+    - cd ..
+    - cd MazeRecursionTests
+    - 'dotnet test --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-MazeRecursionTests-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
     artifacts:
         when: always
         paths:
         - ./**/*test-MazeHuntKillTests-result.xml
+        - ./**/*test-MazeRecursionTests-result.xml
         reports:
             junit:
             - ./**/*test-MazeHuntKillTests-result.xml
+            - ./**/*test-MazeRecursionTests-result.xml
         expire_in: 1 week
 
 deploy:
